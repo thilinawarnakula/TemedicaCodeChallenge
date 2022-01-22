@@ -1,0 +1,1 @@
+export const SERCH_TEXT_INPUT_NAME = 'Search Item';
