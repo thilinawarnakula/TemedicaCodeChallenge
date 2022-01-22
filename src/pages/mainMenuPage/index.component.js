@@ -185,7 +185,7 @@ const MainMenuPage = ({ navigation }) => {
                 <RBSheet
                     ref={refRBSheet}
                     closeOnDragDown={true}
-                    height={300}
+                    height={400}
                     closeOnPressMask={false}
                     customStyles={styles.bottomSheetView}
                     onClose={closeBottomSheet}
