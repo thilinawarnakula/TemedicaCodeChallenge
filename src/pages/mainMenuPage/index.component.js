@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import {
     SafeAreaView,
     View,
@@ -9,12 +9,14 @@ import {
     getDrugsList
 } from './index.controller';
 import { useIsFocused } from '@react-navigation/native';
+import RBSheet from "react-native-raw-bottom-sheet";
 
 import MenuCard from '../../components/MenuCard';
 import NoResults from '../../components/NoResults';
 import HomeHeader from '../../components/HomeHeader';
 import Loader from '../../components/Loader';
 import CustomTextView from '../../components/CustomTextView';
+import BottomSheet from '../../components/BottomSheet';
 
 import {
     NO_RESULT_HEADER,
@@ -29,14 +31,23 @@ const MainMenuPage = ({ navigation }) => {
     const [isLoading, setLoading] = useState(false);
     const [dataList, setData] = useState([]);
     const [filterDataList, setFilterData] = useState([]);
+    const [drugName, setDrugName] = useState('');;
+    const [drugDescription, setDrugDescription] = useState('');
 
     const isFocused = useIsFocused();
+    const refRBSheet = useRef();
 
     useEffect(() => {
         if (isFocused) {
             fetchData();
         }
     }, [isFocused]);
+
+    useEffect(() => {
+        if (drugName != '' && drugDescription != '') {
+            refRBSheet.current.open()
+        }
+    }, [drugName,drugDescription]);
 
     const fetchData = () => {
         resetStateValues();
@@ -61,6 +72,8 @@ const MainMenuPage = ({ navigation }) => {
     };
 
     const onPressItem = (item) => {
+        setDrugName(item.name);
+        setDrugDescription(item.description);
     };
 
     const resetStateValues = () => {
@@ -72,6 +85,15 @@ const MainMenuPage = ({ navigation }) => {
     const clearText = () => {
         setSearchText('');
         setFilterData(dataList);
+    };
+
+    const closeBottomSheet = () => {
+        clearDrugData();
+    };
+
+    const clearDrugData = () => {
+        setDrugName('');
+        setDrugDescription('');
     };
 
     const onTextChange = (text) => {
@@ -160,6 +182,16 @@ const MainMenuPage = ({ navigation }) => {
             <View>
                 {renderHeader()}
                 {renderFlatListContainer()}
+                <RBSheet
+                    ref={refRBSheet}
+                    closeOnDragDown={true}
+                    height={300}
+                    closeOnPressMask={false}
+                    customStyles={styles.bottomSheetView}
+                    onClose={closeBottomSheet}
+                >
+                    <BottomSheet drugName={drugName} drugDescription={drugDescription}/>
+                </RBSheet>
             </View>
             <View style={styles.loadingContainer}>
                 {isLoading &&
@@ -173,4 +205,4 @@ const MainMenuPage = ({ navigation }) => {
     )
 }
 
-export default MainMenuPage
+export default MainMenuPage;

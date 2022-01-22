@@ -39,6 +39,18 @@ const style = EStyleSheet.create({
         textAlign: 'left',
         marginLeft : '20rem',
         marginBottom: '10rem'
+    },
+    bottomSheetView:{
+        container: {
+            backgroundColor: COLORS.gray,
+            elevation: 5,
+        },
+        wrapper: {
+            backgroundColor: COLORS.transparent
+        },
+        draggableIcon: {
+            backgroundColor: COLORS.primary
+        }
     }
 });
 
