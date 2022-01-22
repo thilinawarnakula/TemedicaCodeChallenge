@@ -14,6 +14,14 @@ const style = EStyleSheet.create({
         flex : 1,
         backgroundColor: COLORS.white,
     },
+    listView : {
+        marginTop : '10rem',
+        backgroundColor : COLORS.transparent,
+    },
+    listViewContainer:{
+        padding: '5rem',
+        shadowOpacity: .3,
+    },
 });
 
 export default style;

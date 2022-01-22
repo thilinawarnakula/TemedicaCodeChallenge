@@ -10,7 +10,8 @@ import {
     LOGO_ICON,
 } from '../utilities/icons';
 import {
-    SERCH_TEXT_INPUT_NAME
+    SERCH_TEXT_INPUT_NAME,
+    SERCH_TEXT_PlACE_HOLDER_INPUT_NAME
 } from '../utilities/strings';
 
 import CustomInput from './CustomInput';
@@ -34,7 +35,8 @@ const HomeHeader = ({
                 searchText={searchText} 
                 onChangeText={onChangeText} 
                 clearText={clearText}
-                textInputName={SERCH_TEXT_INPUT_NAME}/>
+                textInputName={SERCH_TEXT_INPUT_NAME}
+                placeholderName={SERCH_TEXT_PlACE_HOLDER_INPUT_NAME}/>
         </View>
     );
 };

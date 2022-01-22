@@ -22,7 +22,8 @@ const CustomInput = (props) => {
         onChangeText,
         searchText,
         clearText,
-        textInputName
+        textInputName,
+        placeholderName
     } = props;
 
     return (
@@ -33,7 +34,7 @@ const CustomInput = (props) => {
                     style={styles.input}
                     value={searchText}
                     onChangeText={onChangeText}
-                    placeholder='Search Item'>
+                    placeholder={placeholderName}>
                 </TextInput>
                 {
                     searchText !== '' &&
