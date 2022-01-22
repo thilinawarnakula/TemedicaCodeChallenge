@@ -18,10 +18,28 @@ const style = EStyleSheet.create({
         marginTop : '10rem',
         backgroundColor : COLORS.transparent,
     },
+    loadingContainer:{
+        justifyContent: 'center',
+        alignItems: 'center', 
+    },
+    loadingView :{
+        width : '60rem',
+        height : '22rem',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     listViewContainer:{
         padding: '5rem',
         shadowOpacity: .3,
     },
+    itemCountText:{
+        color: COLORS.primary,
+        fontSize: '12rem',
+        fontWeight: '700',
+        textAlign: 'left',
+        marginLeft : '20rem',
+        marginBottom: '10rem'
+    }
 });
 
 export default style;

@@ -11,8 +11,17 @@ import {
 import { useIsFocused } from '@react-navigation/native';
 
 import MenuCard from '../../components/MenuCard';
+import NoResults from '../../components/NoResults';
 import HomeHeader from '../../components/HomeHeader';
+import Loader from '../../components/Loader';
+import CustomTextView from '../../components/CustomTextView';
 
+import {
+    NO_RESULT_HEADER,
+    NO_RESULT_SUB_HEADER,
+    RESULTS_ITEM_COUNT_PART_ONE,
+    RESULTS_ITEM_COUNT_PART_TWO
+} from '../../utilities/strings';
 
 const MainMenuPage = ({ navigation }) => {
 
@@ -28,7 +37,6 @@ const MainMenuPage = ({ navigation }) => {
             fetchData();
         }
     }, [isFocused]);
-
 
     const fetchData = () => {
         resetStateValues();
@@ -101,6 +109,12 @@ const MainMenuPage = ({ navigation }) => {
         )
     };
 
+    const renderFullLoadingIndicator = () => ((isLoading) ? (
+        <View style={styles.loadingView}>
+            <Loader />
+        </View>
+    ) : null);
+
     const renderFlatListContainer = () => (
         <FlatList
             nestedScrollEnabled
@@ -114,7 +128,21 @@ const MainMenuPage = ({ navigation }) => {
                 fetchData();
             }}
             refreshing={isLoading}
+            ListHeaderComponent={!isLoading && filterDataList.length > 0 && renderDrugCount()}
         />
+    );
+
+    const renderNoResultList = () => (
+        <NoResults
+            headerText={NO_RESULT_HEADER}
+            subHeaderText={NO_RESULT_SUB_HEADER} />
+    );
+
+    const renderDrugCount = () => (
+        <CustomTextView
+            textValue={filterDataList.length > 0
+                ? RESULTS_ITEM_COUNT_PART_ONE + ` ${filterDataList.length} ` + RESULTS_ITEM_COUNT_PART_TWO : 0}
+            textStyle={styles.itemCountText} />
     );
 
     const renderHeader = () => (
@@ -133,9 +161,16 @@ const MainMenuPage = ({ navigation }) => {
                 {renderHeader()}
                 {renderFlatListContainer()}
             </View>
+            <View style={styles.loadingContainer}>
+                {isLoading &&
+                    renderFullLoadingIndicator()
+                }
+            </View>
+            {!isLoading && filterDataList.length == 0 &&
+                renderNoResultList()
+            }
         </SafeAreaView>
     )
 }
 
 export default MainMenuPage
-
