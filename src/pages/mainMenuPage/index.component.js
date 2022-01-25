@@ -11,7 +11,7 @@ import {
 import { useIsFocused } from '@react-navigation/native';
 import RBSheet from "react-native-raw-bottom-sheet";
 
-import MenuCard from '../../components/MenuCard';
+import MenuCard from '../../components/menuCard/index.component';
 import NoResults from '../../components/noResults/index.component';
 import HomeHeader from '../../components/homeHeader/index.component';
 import Loader from '../../components/loader/index.component';

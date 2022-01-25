@@ -5,6 +5,9 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 import {COLORS} from '../../utilities/colors'; 
 
+const marginBottomItem = 20;
+const paddingItem = 10;
+
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({ $rem: entireScreenWidth / 380 });
 

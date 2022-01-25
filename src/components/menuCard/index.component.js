@@ -6,11 +6,8 @@ import styles from './index.styles';
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({ $rem: entireScreenWidth / 380 });
 
-import CustomTextView from './customTextView/index.component';
-import DiseasesTags from './diseasesTags/index.component';
-
-const marginBottomItem = 20;
-const paddingItem = 10;
+import CustomTextView from '../customTextView/index.component';
+import DiseasesTags from '../diseasesTags/index.component';
 
 const MenuCard = (props) => {
   const {
