@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Dimensions, Animated, TouchableOpacity } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import styles from './index.styles';
+import moment from 'moment';
 
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({ $rem: entireScreenWidth / 380 });
@@ -32,7 +33,7 @@ const MenuCard = (props) => {
         onPress={onPress}>
         <View style={styles.drugDetalisContainer}>
           <CustomTextView textValue={drugName || ''} textStyle={styles.drugNameText} />
-          <CustomTextView textValue={drugReleasedDate || ''} textStyle={styles.drugDateText} />
+          <CustomTextView textValue={moment(drugReleasedDate).format('MMMM Do, YYYY') || ''} textStyle={styles.drugDateText} />
         </View>
         {
           drugDiseases && drugDiseases.length > 0 &&
