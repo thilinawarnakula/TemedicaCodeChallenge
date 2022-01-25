@@ -21,6 +21,9 @@ import Loader from '../../components/loader/index.component';
 import CustomTextView from '../../components/customTextView/index.component';
 import BottomSheet from '../../components/bottomSheet/index.component';
 
+import useSearchInputHook from '../../customHooks/useSearchInputHook';
+import useLoaderHook from '../../customHooks/useLoaderHook';
+
 import {
     filterItems
   } from '../../services/helperService';
@@ -34,8 +37,8 @@ import {
 
 const MainMenuPage = ({ navigation }) => {
 
-    const [searchText, setSearchText] = useState('');
-    const [isLoading, setLoading] = useState(false);
+    const [searchText,onSearchtextChangeValue,clearSearchText] = useSearchInputHook('');
+    const [isLoading,setLoadingValue] = useLoaderHook(false);
     const [dataList, setData] = useState([]);
     const [filterDataList, setFilterData] = useState([]);
     const [drugName, setDrugName] = useState('');;
@@ -58,7 +61,7 @@ const MainMenuPage = ({ navigation }) => {
 
     const fetchData = () => {
         resetStateValues();
-        setLoading(true);
+        setLoadingValue(true);
         getDrugsList(
             getDrugsListSuccess,
             getDrugsListError,
@@ -69,13 +72,13 @@ const MainMenuPage = ({ navigation }) => {
         let dataList = response.drugs;
         setData(dataList);
         setFilterData(dataList);
-        setLoading(false);
+        setLoadingValue(false);
     };
 
     const getDrugsListError = (error) => {
         setData([]);
         setFilterData([]);
-        setLoading(false);
+        setLoadingValue(false);
     };
 
     const onPressItem = (item) => {
@@ -84,13 +87,13 @@ const MainMenuPage = ({ navigation }) => {
     };
 
     const resetStateValues = () => {
-        setSearchText('');
+        clearSearchText();
         setData([])
         setFilterData([]);
     };
 
     const clearText = () => {
-        setSearchText('');
+        clearSearchText();
         setFilterData(dataList);
     };
 
@@ -104,8 +107,8 @@ const MainMenuPage = ({ navigation }) => {
     };
 
     const onTextChange = (text) => {
-        setLoading(true);
-        setSearchText(text);
+        setLoadingValue(true);
+        onSearchtextChangeValue(text);
         if (text !== '') {
             const func = memoize(
                 debounce(() => {
@@ -115,14 +118,14 @@ const MainMenuPage = ({ navigation }) => {
             func();
         } else {
             setFilterData(dataList);
-            setLoading(false);
+            setLoadingValue(false);
         }
     };
 
     const searchItem = (text) => {
         const filteredData = filterItems(dataList,text);
         setFilterData(filteredData);
-        setLoading(false);
+        setLoadingValue(false);
     };
 
     const renderItem = ({ item, index }) => {
