@@ -13,4 +13,8 @@ Step 4 : 	to run the iOS app, run this commond from the root level of the projec
 Step 5 : 	to run the Android app, run this commond from the root level of the project -- > npx react-native run-android
 
 
+## important Notes:
+
+    - I have not integrate pagination login for the list here,We can do that integration once we moving forward with real API's (by adding onEndReached props in the Flat list component) 
+
 
