@@ -29,15 +29,13 @@ const style = EStyleSheet.create({
         alignItems: 'center',
     },
     listViewContainer:{
-        padding: '5rem',
+        padding: '20rem',
         shadowOpacity: .3,
     },
     itemCountText:{
         color: COLORS.primary,
         fontSize: '12rem',
-        fontWeight: '700',
         textAlign: 'left',
-        marginLeft : '20rem',
         marginBottom: '10rem'
     },
     bottomSheetView:{

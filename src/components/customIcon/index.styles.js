@@ -8,8 +8,6 @@ EStyleSheet.build({ $rem: entireScreenWidth / 380 });
 
 const style = EStyleSheet.create({
     imageView :{
-        width : '30rem',
-        height : '30rem',
         justifyContent: 'center',
         alignItems: 'center',
     },

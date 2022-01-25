@@ -25,7 +25,7 @@ const BottomSheet = (props) => {
 
     return (
         <View style={styles.mainContainer}>
-            <CustomIcon iconName={LOGO_ICON}/>
+            <CustomIcon iconName={LOGO_ICON} containerStyle={styles.iconView}/>
             <CustomTextView  textValue={drugName} textStyle={styles.drugNameBottomSheet} />
             <CustomTextView  textValue={drugDescription} textStyle={styles.drugDescriptionBottomSheet} />
         </View>

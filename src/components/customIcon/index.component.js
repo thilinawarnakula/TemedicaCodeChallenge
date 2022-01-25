@@ -14,12 +14,13 @@ const CustomIcon = (props) => {
 
     const {
         iconName,
+        containerStyle
     } = props;
 
     return (
         <Image
             source={iconName}
-            style={styles.imageView} 
+            style={[styles.imageView, containerStyle]} 
             resizeMode='contain'/>
     );
 };

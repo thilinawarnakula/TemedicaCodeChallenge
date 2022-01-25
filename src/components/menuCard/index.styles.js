@@ -14,16 +14,16 @@ EStyleSheet.build({ $rem: entireScreenWidth / 380 });
 const style = EStyleSheet.create({
     item: {
         marginBottom: marginBottomItem,
-        borderRadius: 10,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        borderRadius: 0,
+        backgroundColor: COLORS.white,
+        shadowColor: COLORS.black,
         shadowOffset: {
           width: 0,
-          height: 10
+          height: 20
         },
         shadowRadius: 30,
         padding: paddingItem,
-        elevation: 5,
+        elevation: 10,
       },
       drugDetalisContainer: {
         flexDirection: 'row',

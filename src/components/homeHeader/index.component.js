@@ -29,7 +29,7 @@ const HomeHeader = ({
 
     return (
         <View style={styles.container}>
-            <CustomIcon iconName={LOGO_ICON}/>
+            <CustomIcon iconName={LOGO_ICON} containerStyle={styles.iconView}/>
             <CustomInput 
                 searchText={searchText} 
                 onChangeText={onChangeText} 

@@ -23,6 +23,10 @@ const style = EStyleSheet.create({
     headerTextView:{
         color : COLORS.white,
         fontSize:'30rem',
+    },
+    iconView:{
+        width : '30rem',
+        height : '30rem',
     }
 });
 

@@ -26,6 +26,10 @@ const style = EStyleSheet.create({
         fontSize: '14rem',
         fontWeight: '700',
         textAlign: 'center',
+    },
+    iconView:{
+        width : '30rem',
+        height : '30rem',
     }
 });
 
