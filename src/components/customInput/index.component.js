@@ -7,10 +7,11 @@ import {
     TouchableOpacity,
     Text
 } from 'react-native';
-import {COLORS} from '../utilities/colors';
 import { 
     CLEAR_ICON,
-} from '../utilities/icons';
+} from '../../utilities/icons';
+
+import styles from './index.styles';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 const entireScreenWidth = Dimensions.get('window').width;
@@ -50,43 +51,5 @@ const CustomInput = (props) => {
         </View>
     );
 };
-
-const styles = EStyleSheet.create({
-    mainView :{
-        flexDirection: 'column',
-    },
-    textInputView :{
-        height: '25rem',
-        width: entireScreenWidth - 80,
-        backgroundColor: COLORS.white,
-        borderRadius: '50rem',
-        paddingLeft: '20rem',
-        elevation: 5,
-        marginTop: '5rem',
-        flexDirection: 'row',
-        justifyContent:'space-between',
-        alignItems: 'center',
-    },
-    input: {
-        flex:9,
-        color: COLORS.black,
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: '12rem',
-    },
-    textClearContainer:{
-        flex:1,
-        marginHorizontal : '10rem'
-    },
-    imagePic : {
-        width: '20rem', 
-        height: '20rem', 
-        resizeMode: 'contain',
-    },
-    textInputHeaderView:{
-        color : COLORS.white,
-        fontSize : '10rem'
-    }
-});
 
 export default CustomInput;

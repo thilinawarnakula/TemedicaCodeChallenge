@@ -4,6 +4,8 @@ import {
     Dimensions
 } from 'react-native';
 
+import styles from './index.styles';
+
 import EStyleSheet from 'react-native-extended-stylesheet';
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({ $rem: entireScreenWidth / 380 });
@@ -19,11 +21,5 @@ const CustomTextView = (props) => {
         <Text style={[textStyle,styles.textView]}>{textValue}</Text>
     );
 };
-
-const styles = EStyleSheet.create({
-    textView :{
-       padding : '5rem'
-    },
-});
 
 export default CustomTextView;

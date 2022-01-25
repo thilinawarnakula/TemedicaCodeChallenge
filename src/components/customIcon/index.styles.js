@@ -1,28 +1,12 @@
-import React from 'react';
-import {
-    Image,
+import { 
     Dimensions
 } from 'react-native';
-
 import EStyleSheet from 'react-native-extended-stylesheet';
+
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({ $rem: entireScreenWidth / 380 });
 
-const CustomIcon = (props) => {
-
-    const {
-        iconName,
-    } = props;
-
-    return (
-        <Image
-            source={iconName}
-            style={styles.imageView} 
-            resizeMode='contain'/>
-    );
-};
-
-const styles = EStyleSheet.create({
+const style = EStyleSheet.create({
     imageView :{
         width : '30rem',
         height : '30rem',
@@ -31,4 +15,4 @@ const styles = EStyleSheet.create({
     },
 });
 
-export default CustomIcon;
+export default style;

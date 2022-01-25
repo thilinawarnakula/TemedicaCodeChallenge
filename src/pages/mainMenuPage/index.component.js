@@ -12,11 +12,11 @@ import { useIsFocused } from '@react-navigation/native';
 import RBSheet from "react-native-raw-bottom-sheet";
 
 import MenuCard from '../../components/MenuCard';
-import NoResults from '../../components/NoResults';
-import HomeHeader from '../../components/HomeHeader';
-import Loader from '../../components/Loader';
-import CustomTextView from '../../components/CustomTextView';
-import BottomSheet from '../../components/BottomSheet';
+import NoResults from '../../components/noResults/index.component';
+import HomeHeader from '../../components/homeHeader/index.component';
+import Loader from '../../components/loader/index.component';
+import CustomTextView from '../../components/customTextView/index.component';
+import BottomSheet from '../../components/bottomSheet/index.component';
 
 import {
     NO_RESULT_HEADER,

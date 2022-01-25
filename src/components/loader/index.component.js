@@ -5,7 +5,9 @@ import {
     Text,
     ActivityIndicator
 } from 'react-native';
-import {COLORS} from '../utilities/colors';
+import {COLORS} from '../../utilities/colors';
+
+import styles from './index.styles';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 const entireScreenWidth = Dimensions.get('window').width;
@@ -19,14 +21,5 @@ const Loader = ({}) => {
         </View>
     );
 };
-
-const styles = EStyleSheet.create({
-    loadingView :{
-        width : '60rem',
-        height : '22rem',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
 
 export default Loader;

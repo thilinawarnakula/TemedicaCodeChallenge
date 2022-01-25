@@ -3,13 +3,14 @@ import {
     Dimensions,
     View
 } from 'react-native';
-import { COLORS } from '../utilities/colors';
 import { 
     LOGO_ICON,
-} from '../utilities/icons';
+} from '../../utilities/icons';
 
-import CustomTextView from './CustomTextView';
-import CustomIcon from './CustomIcon';
+import styles from './index.styles';
+
+import CustomTextView from '../customTextView/index.component';
+import CustomIcon from '../customIcon/index.component';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 const entireScreenWidth = Dimensions.get('window').width;
@@ -30,25 +31,5 @@ const BottomSheet = (props) => {
         </View>
     );
 };
-
-const styles = EStyleSheet.create({
-    mainContainer :{
-        padding: '8rem',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    drugNameBottomSheet :{
-        color: COLORS.primary,
-        fontSize: '18rem',
-        fontWeight: '700',
-        textAlign: 'center',
-    },
-    drugDescriptionBottomSheet :{
-        color: COLORS.black,
-        fontSize: '14rem',
-        fontWeight: '700',
-        textAlign: 'center',
-    }
-});
 
 export default BottomSheet;

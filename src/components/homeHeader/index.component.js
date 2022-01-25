@@ -3,19 +3,18 @@ import {
     Dimensions,
     View,
 } from 'react-native';
-import {
-    COLORS
-} from '../utilities/colors';
 import { 
     LOGO_ICON,
-} from '../utilities/icons';
+} from '../../utilities/icons';
 import {
     SERCH_TEXT_INPUT_NAME,
     SERCH_TEXT_PlACE_HOLDER_INPUT_NAME
-} from '../utilities/strings';
+} from '../../utilities/strings';
 
-import CustomInput from './CustomInput';
-import CustomIcon from './CustomIcon';
+import styles from './index.styles';
+
+import CustomInput from '../customInput/index.component';
+import CustomIcon from '../customIcon/index.component';
 
 
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -40,23 +39,5 @@ const HomeHeader = ({
         </View>
     );
 };
-
-const styles = EStyleSheet.create({
-    container: {
-        backgroundColor : COLORS.primary,
-        height : '120rem',
-        opacity : 0.9,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderBottomLeftRadius: '20rem',
-        borderBottomRightRadius: '20rem',
-        marginBottom:'10rem',
-    },
-    headerTextView:{
-        color : COLORS.white,
-        fontSize:'30rem',
-    }
-});
 
 export default HomeHeader;
