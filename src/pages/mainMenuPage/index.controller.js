@@ -6,7 +6,7 @@ export const getDrugsList = async (
 ) => {
   try {
     const response = drugsData;
-    console.log("getDrugsList -- : ",response);
+    console.log("getDrugsList -- : ");
     getDrugsListSuccess( response);
   } catch (error) {
     console.error("getDrugsList ERROR -- : ",error);
