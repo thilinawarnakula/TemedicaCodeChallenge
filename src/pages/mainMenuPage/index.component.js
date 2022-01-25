@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
     SafeAreaView,
     View,
@@ -11,12 +11,19 @@ import {
 import { useIsFocused } from '@react-navigation/native';
 import RBSheet from "react-native-raw-bottom-sheet";
 
+import _, {debounce} from 'lodash';
+import {memoize} from 'lodash/fp';
+
 import MenuCard from '../../components/menuCard/index.component';
 import NoResults from '../../components/noResults/index.component';
 import HomeHeader from '../../components/homeHeader/index.component';
 import Loader from '../../components/loader/index.component';
 import CustomTextView from '../../components/customTextView/index.component';
 import BottomSheet from '../../components/bottomSheet/index.component';
+
+import {
+    filterItems
+  } from '../../services/helperService';
 
 import {
     NO_RESULT_HEADER,
@@ -47,7 +54,7 @@ const MainMenuPage = ({ navigation }) => {
         if (drugName != '' && drugDescription != '') {
             refRBSheet.current.open()
         }
-    }, [drugName,drugDescription]);
+    }, [drugName, drugDescription]);
 
     const fetchData = () => {
         resetStateValues();
@@ -100,20 +107,22 @@ const MainMenuPage = ({ navigation }) => {
         setLoading(true);
         setSearchText(text);
         if (text !== '') {
-            const filteredData = dataList.filter((item) => {
-
-                const itemData = item.name
-                    ? item.name.toLowerCase()
-                    : ''.toUpperCase();
-                const textData = text.toLowerCase();
-                return itemData.indexOf(textData) > -1;
-            });
-            setFilterData(filteredData);
-            setLoading(false);
+            const func = memoize(
+                debounce(() => {
+                    searchItem(text);
+                }, 300),
+            );
+            func();
         } else {
             setFilterData(dataList);
             setLoading(false);
         }
+    };
+
+    const searchItem = (text) => {
+        const filteredData = filterItems(dataList,text);
+        setFilterData(filteredData);
+        setLoading(false);
     };
 
     const renderItem = ({ item, index }) => {
@@ -190,7 +199,7 @@ const MainMenuPage = ({ navigation }) => {
                     customStyles={styles.bottomSheetView}
                     onClose={closeBottomSheet}
                 >
-                    <BottomSheet drugName={drugName} drugDescription={drugDescription}/>
+                    <BottomSheet drugName={drugName} drugDescription={drugDescription} />
                 </RBSheet>
             </View>
             <View style={styles.loadingContainer}>
